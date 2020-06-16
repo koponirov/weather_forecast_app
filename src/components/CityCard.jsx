@@ -12,47 +12,44 @@ const useStyles = makeStyles({
         justifyContent: 'center',
     },
     root: {
-        minWidth: 275,
+        minWidth: '50%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center'
-    },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
+        alignItems: 'center',
+        margin: 8
     },
     title: {
         fontSize: 14,
     },
     pos: {
-        marginBottom: 12,
+        marginBottom: 4,
     },
 });
 
-export default function SimpleCard(props) {
+export default function CityCard(props) {
     const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
-    // console.log(props.store.currentCity)
 
     return (
         <div className={classes.container}>
             <Card className={classes.root}>
-                <CardContent>
-                    <Typography variant="h5" component="h2">
+                <CardContent className={classes.root}>
+                    <Typography variant="h2" component="span">
                         {props.data.getCurrentWeather.name}
                     </Typography>
-                    <Typography variant="h5" component="h2">
+                    <Typography variant="h4" component="h2">
                         {props.data.getCurrentWeather.main.temp_c}&#8451;
                     </Typography>
 
-                    <Typography className={classes.pos} color="textSecondary">
+                    <Typography className={classes.pos}
+                                color="textSecondary"
+                                variant="h4"
+                    >
                         {props.data.getCurrentWeather.weather[0].main}
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small">Add to favorites</Button>
+                    <Button size="small" color="primary">Add to favorites</Button>
                 </CardActions>
             </Card>
         </div>

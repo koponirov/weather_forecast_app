@@ -1,0 +1,200 @@
+[
+  {
+    "id": 0,
+    "name": "Minsk"
+  },
+  {
+    "id": 1,
+    "name": "London"
+  },
+  {
+    "id": 2,
+    "name": "Berlin"
+  },
+  {
+    "id": 3,
+    "name": "Tbilisi"
+  },
+  {
+    "id": 4,
+    "name": "Madrid"
+  },
+  {
+    "id": 5,
+    "name": "Barcelona"
+  },
+  {
+    "id": 6,
+    "name": "Bilbao"
+  },
+  {
+    "id": 7,
+    "name": "Valencia"
+  },
+  {
+    "id": 8,
+    "name": "Roma"
+  },
+  {
+    "id": 9,
+    "name": "Nur-Sultan"
+  },
+  {
+    "id": 10,
+    "name": "Ottawa"
+  },
+  {
+    "id": 11,
+    "name": "Toronto"
+  },
+  {
+    "id": 12,
+    "name": "Calgary"
+  },
+  {
+    "id": 13,
+    "name": "Limassol"
+  },
+  {
+    "id": 14,
+    "name": "Bejin"
+  },
+  {
+    "id": 15,
+    "name": "Ubud"
+  },
+  {
+    "id": 16,
+    "name": "Reykjavik"
+  },
+  {
+    "id": 17,
+    "name": "Havana"
+  },
+  {
+    "id": 18,
+    "name": "Riga"
+  },
+  {
+    "id": 19,
+    "name": "Kishinev"
+  },
+  {
+    "id": 20,
+    "name": "Kishinev"
+  },
+  {
+    "id": 21,
+    "name": "Amsterdam"
+  {
+    "id": 22,
+    "name": "Oslo"
+  },
+  {
+    "id": 23,
+    "name": "Abu Dhabi"
+  },
+  {
+    "id": 24,
+    "name": "Almaty"
+  },
+  {
+    "id": 25,
+    "name": "Lisbon"
+  },
+  {
+    "id": 26,
+    "name": "Porto"
+  },
+  {
+    "id": 27,
+    "name": "Malaga"
+  },
+  {
+    "id": 28,
+    "name": "Seoul"
+  },
+  {
+    "id": 29,
+    "name": "Moskow"
+  },
+  {
+    "id": 30,
+    "name": "St Petersburg"
+  },
+  {
+    "id": 31,
+    "name": "Novosibirsk"
+  {
+    "id": 32,
+    "name": "Vladivostok"
+  },
+  {
+    "id": 32,
+    "name": "Vladivostok"
+  },
+  {
+    "id": 33,
+    "name": "Washington"
+  },
+  {
+    "id": 34,
+    "name": "New York"
+  },
+  {
+    "id": 35,
+    "name": "Denver"
+  },
+  {
+    "id": 35,
+    "name": "Miami"
+  },
+  {
+    "id": 36,
+    "name": "Los Angeles"
+  },
+  {
+    "id": 37,
+    "name": "Bangkok"
+  },
+  {
+    "id": 38,
+    "name": "Ankara"
+  },
+  {
+    "id": 39,
+    "name": "Kiev"
+  },
+  {
+    "id": 40,
+    "name": "Helsinki"
+  },
+  {
+    "id": 41,
+    "name": "Paris"
+  },
+  {
+    "id": 42,
+    "name": "Zagreb"
+  },
+  {
+    "id": 43,
+    "name": "Prague"
+  },
+  {
+    "id": 44,
+    "name": "Geneva"
+  },
+  {
+    "id": 45,
+    "name": "Stockholm"
+  },
+  {
+    "id": 46,
+    "name": "Gothenburg"
+  },
+  {
+    "id": 47,
+    "name": "Tokyo"
+  }
+]
