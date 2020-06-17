@@ -27,7 +27,22 @@ const useStyles = makeStyles({
     },
 });
 
-export default function CityCard(props) {
+export default function CityCard({ data, store }) {
+
+    const addToFavList = (city) => {
+        // store.favoriteCitiesList.length>0 ?
+        // store.favoriteCitiesList.some(favCity=>{
+        //     if (favCity !== city) {
+        //         debugger
+        //         store.addCityToFavorites(city)
+        //     } else alert('This city already exist')
+        // }) : store.addCityToFavorites(city)
+        if (store.favoriteCitiesList.some(favCity=>favCity === city)) {
+            return
+        } else {store.addCityToFavorites(city)}
+
+    };
+
     const classes = useStyles();
 
     return (
@@ -35,25 +50,26 @@ export default function CityCard(props) {
             <Card className={classes.root}>
                 <CardContent className={classes.root}>
                     <Typography variant="h2" component="span">
-                        {props.data.getCurrentWeather.name}
+                        {data.getCurrentWeather.name}
                     </Typography>
                     <Typography variant="h4" component="h2">
-                        {props.data.getCurrentWeather.main.temp_c}&#8451;
+                        {data.getCurrentWeather.main.temp_c}&#8451;
                     </Typography>
 
                     <Typography className={classes.pos}
                                 color="textSecondary"
                                 variant="h4"
                     >
-                        {props.data.getCurrentWeather.weather[0].main}
+                        {data.getCurrentWeather.weather[0].main}
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small" color="primary">Add to favorites</Button>
+                    <Button size="small"
+                            color="primary"
+                            onClick={()=>addToFavList(store.currentCity)}
+                    >Add to favorites</Button>
                 </CardActions>
             </Card>
         </div>
-
-
     );
 }

@@ -6,9 +6,10 @@ import { useQuery } from '@apollo/react-hooks';
 import { ApolloProvider } from '@apollo/react-hooks';
 import CityContainer from "./components/CityContainer";
 import Container from '@material-ui/core/Container';
-import SimpleCard from "./components/CityCard";
+import CityCard from "./components/CityCard";
 import {observer} from "mobx-react";
 import FormContainer from "./components/Form/MyForm";
+import ListContainer from "./components/List/ListContainer";
 
 
 const client = new ApolloClient({
@@ -30,88 +31,11 @@ export const CURRENT_WEATHER = gql`
    }
  `;
 
-const CURRENT_WEATHER11 = gql`
-{
-  getWeather(cityName: "Moscow") {
-    cod 
-    message 
-    cnt 
-    list { 
-        dt 
-        main { 
-            temp 
-            feels_like 
-            temp_min 
-            temp_max 
-            temp_kf 
-            temp_f 
-            temp_c 
-            pressure 
-            sea_level 
-            grnd_level 
-            humidity 
-        }
-        weather { 
-            id 
-            main 
-            description 
-            icon 
-        }
-        clouds { 
-            all 
-        }
-        wind { 
-            speed 
-            deg 
-        }
-        rain { 
-            h1 
-            h3 
-        }
-        snow { 
-            h1 
-            h3 
-        }
-        sys { 
-            pod 
-        }
-        dt_txt 
-    }
-    city { 
-        id 
-        name 
-        country 
-        coord { 
-            lat 
-            lon 
-        }
-        population 
-        timezone 
-        sunrise 
-        sunset 
-    }
-    fahrenheit_avg 
-    celcius_avg
-    kelvin_avg 
-    fahrenheit_max_avg
-    celcius_max_avg 
-    kelvin_max_avg 
-    pressure_avg 
-    humidity_avg 
-    sea_level_avg 
-    pressure 
-    humidity 
-    temp_farenheit 
-    temp_celcius 
-    temp_kelvin 
-    sea_level 
-}
-}
-`;
 
-export const CurrentWeather = observer((props) => {
 
-    const city = props.store.currentCity;
+export const CurrentWeather = observer(({ store }) => {
+
+    const city = store.currentCity;
 
     const { loading, error, data } = useQuery(CURRENT_WEATHER, {
         variables: { city },
@@ -123,7 +47,7 @@ export const CurrentWeather = observer((props) => {
     console.log(data);
 
     return (
-        <SimpleCard data={data} />
+        <CityCard data={data} store={store} />
     )
 });
 
@@ -134,6 +58,7 @@ function App(props) {
                 <h1 className="header">Weather Forecast</h1>
                 <FormContainer/>
                 <CityContainer/>
+                <ListContainer/>
             </Container>
 
         </ApolloProvider>

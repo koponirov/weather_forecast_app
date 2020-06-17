@@ -1,10 +1,9 @@
 import React from "react";
-import {Field, Form, Formik} from "formik";
+import { Form, Formik } from "formik";
 import * as Yup from 'yup';
 import FormikField from "./FormikField/FormikField";
 import Button from '@material-ui/core/Button';
-import {inject, observer} from "mobx-react";
-import FormComponent from "../FormikForm/FormikForm";
+import { inject, observer } from "mobx-react";
 
 const FormContainer = inject("store")(observer(({store})=><MyForm store={store}/>))
 
