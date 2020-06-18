@@ -4,6 +4,8 @@ import * as Yup from 'yup';
 import FormikField from "./FormikField/FormikField";
 import Button from '@material-ui/core/Button';
 import { inject, observer } from "mobx-react";
+import {NavLink} from "react-router-dom";
+import '../../App.css'
 
 const FormContainer = inject("store")(observer(({store})=><MyForm store={store}/>))
 
@@ -30,19 +32,33 @@ const MyForm = (props) => {
                 onSubmit={handleSubmit}
                 validationSchema={validationSchema}
             >
-                {({dirty, isValid}) => {
+                {({dirty, isValid }) => {
                     return (
                         <Form className='form-container'>
                             <div>
                                 <FormikField name="city"/>
                             </div>
-                            <Button disabled={!dirty || !isValid}
-                                    type="submit"
-                                    variant="contained"
-                                    size="large"
-                                    color="primary"
-                                    className='btn'
-                            >Get forecast</Button>
+                            <div>
+
+                                <Button disabled={!dirty || !isValid}
+                                        type="submit"
+                                        variant="contained"
+                                        size="large"
+                                        color="primary"
+                                        className='btn'
+                                >Get forecast</Button>
+
+                                <NavLink to={'/list'}>
+                                    <Button
+                                        variant="outlined"
+                                        size="large"
+                                        color="secondary"
+                                        className='btn'
+                                    >To list</Button>
+                                </NavLink>
+                            </div>
+
+
                         </Form>
                     )
                 }

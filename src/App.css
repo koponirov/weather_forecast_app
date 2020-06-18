@@ -11,6 +11,7 @@
     flex-direction: column;
     justify-content: center;
 
+
 }
 .field-container{
     margin-bottom: 25px;
@@ -19,4 +20,10 @@
     max-width: 50%;
     align-self: center;
 
+}
+.item {
+    width: 100%;
+    border: 1px solid grey;
+    display: flex;
+    justify-content: space-between;
 }

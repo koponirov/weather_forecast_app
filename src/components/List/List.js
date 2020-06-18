@@ -1,70 +1,49 @@
 import React from "react";
-import {observer} from "mobx-react";
-import {gql} from "apollo-boost";
+import {inject, observer} from "mobx-react";
 import {useQuery} from "@apollo/react-hooks";
+import {CURRENT_WEATHER} from "../../queries";
+import {NavLink} from "react-router-dom";
 
 
+const ListItem = ({city, store}) => {
 
-const ListItem = ({city}) => {
-
-    const CURRENT_WEATHER = gql`
-   query currentCityWeather($city: String!) {
-     getCurrentWeather(cityName: $city) {
-         weather {
-             main
-         }
-         main{
-             temp_c
-         }
-     }
-   }
- `;
-
-    const { loading, error, data } = useQuery(CURRENT_WEATHER, {
-        variables: { city },
+    const {loading, error, data} = useQuery(CURRENT_WEATHER, {
+        variables: {city},
     });
 
-    const path = '/list/'+city
+    const path = `/city/${city}`
+
 
     return (
 
-            <div>
-                <span>{city}</span>
-                <span>{data.getCurrentWeather.main.temp_c}</span>
-                <span>{data.getCurrentWeather.weather[0].main}</span>
-
-                <button>show forecast</button>
-            </div>
+        <div className='item'>
+            <NavLink to={path}>
+                <div className='item'>
+                    <span>{city}</span>
+                    <span>{data.getCurrentWeather.main.temp_c}</span>
+                    <span>{data.getCurrentWeather.weather[0].main}</span>
+                </div>
+            </NavLink>
+            <button onClick={() => store.removeCityFromFavorites(city)}>delete</button>
+        </div>
 
 
     )
 };
 
-const List = observer(({ store }) => {
+const List = inject("store")(observer(({store}) => {
 
     return (
         <div>
-            {store.favoriteCitiesList.map(city=><ListItem key={city} city={city}/>)}
+            <NavLink to={'/main'}>
+                <button>back to search</button>
+            </NavLink>
+            {store.favoriteCitiesList.map(city => <ListItem key={city} city={city} store={store}/>)}
         </div>
     )
-});
+
+
+}));
 
 export default List;
 
-// const CURRENT_WEATHER = gql`
-// {
-//   getWeather(cityName: "Moscow") {
-//     message
-//     list {
-//
-//         main {
-//             temp_c
-//         }
-//         weather {
-//             main
-//         }
-//         dt_txt
-//     }
-//   }
-// }
-// `;

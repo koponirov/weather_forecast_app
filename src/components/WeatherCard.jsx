@@ -27,16 +27,10 @@ const useStyles = makeStyles({
     },
 });
 
-export default function CityCard({ data, store }) {
+export default function WeatherCard({ data, store }) {
 
     const addToFavList = (city) => {
-        // store.favoriteCitiesList.length>0 ?
-        // store.favoriteCitiesList.some(favCity=>{
-        //     if (favCity !== city) {
-        //         debugger
-        //         store.addCityToFavorites(city)
-        //     } else alert('This city already exist')
-        // }) : store.addCityToFavorites(city)
+
         if (store.favoriteCitiesList.some(favCity=>favCity === city)) {
             return
         } else {store.addCityToFavorites(city)}
