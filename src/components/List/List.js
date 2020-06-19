@@ -3,6 +3,9 @@ import {inject, observer} from "mobx-react";
 import {useQuery} from "@apollo/react-hooks";
 import {CURRENT_WEATHER} from "../../queries";
 import {NavLink} from "react-router-dom";
+import Row from "../Row";
+import Back from "../Back";
+import List from '@material-ui/core/List';
 
 
 const ListItem = ({city, store}) => {
@@ -11,39 +14,50 @@ const ListItem = ({city, store}) => {
         variables: {city},
     });
 
-    const path = `/city/${city}`
+    if (loading||!data) return <p>Loading...</p>
+
+    const path = `/city/${city}`;
+
+    console.log(data)
+
+    const temp = (data.getCurrentWeather.main.temp_c).toFixed(1);
+
+    const weather = data.getCurrentWeather.weather[0].main
 
 
-    return (
-
-        <div className='item'>
-            <NavLink to={path}>
-                <div className='item'>
-                    <span>{city}</span>
-                    <span>{data.getCurrentWeather.main.temp_c}</span>
-                    <span>{data.getCurrentWeather.weather[0].main}</span>
-                </div>
-            </NavLink>
-            <button onClick={() => store.removeCityFromFavorites(city)}>delete</button>
-        </div>
 
 
-    )
+    return  <Row city={city} store={store}
+                          temp={temp} path={path} weather={weather}/>
+
+
+
+
 };
 
-const List = inject("store")(observer(({store}) => {
+const ListComponent = inject("store")(observer(({store}) => {
 
     return (
         <div>
-            <NavLink to={'/main'}>
-                <button>back to search</button>
-            </NavLink>
-            {store.favoriteCitiesList.map(city => <ListItem key={city} city={city} store={store}/>)}
+            <div>
+                <NavLink to={'/main'}>
+                    <Back/>
+                </NavLink>
+                <h1>favorite cities</h1>
+            </div>
+            {store.favoriteCitiesList.length>0?
+                <List>
+                    {store.favoriteCitiesList.map(city => <ListItem key={city} city={city} store={store}/>)}
+                </List>:
+                <p>No cities into favorites yet</p>
+            }
+
+
         </div>
     )
 
 
 }));
 
-export default List;
+export default ListComponent;
 

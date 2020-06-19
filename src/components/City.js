@@ -4,8 +4,9 @@ import {NavLink, withRouter} from "react-router-dom";
 import {useQuery} from "@apollo/react-hooks";
 import {DETAILED_WEATHER} from "../queries";
 import { format } from 'date-fns'
-import parseIso from "date-fns/parseISO";
 import {zonedTimeToUtc} from "date-fns-tz";
+import Back from "./Back";
+import DateRow from "./DateRow";
 
 const CurrentDateWeather = ({ line }) => {
 
@@ -17,12 +18,14 @@ const CurrentDateWeather = ({ line }) => {
 
     const weather = line.weather[0].main
 
-    return(
-        <div>
-            <span>{date}</span>
-            <span>{temp}&#8451;</span>
-            <span>{weather}</span>
-        </div>
+    return( <DateRow date={date} temp={temp} weather={weather}/>
+
+
+        // <div>
+        //     <span>{date}</span>
+        //     <span>{temp}&#8451;</span>
+        //     <span>{weather}</span>
+        // </div>
 
     )
 };
@@ -47,7 +50,7 @@ const City = (props) => {
     return (
         <div>
             <NavLink to={'/list'}>
-                <button>back to favorites</button>
+                <Back/>
             </NavLink>
             <h1>{city}</h1>
             <div>{lineItem}</div>

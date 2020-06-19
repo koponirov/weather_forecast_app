@@ -47,7 +47,7 @@ export default function WeatherCard({ data, store }) {
                         {data.getCurrentWeather.name}
                     </Typography>
                     <Typography variant="h4" component="h2">
-                        {data.getCurrentWeather.main.temp_c}&#8451;
+                        {data.getCurrentWeather.main.temp_c} &#8451;
                     </Typography>
 
                     <Typography className={classes.pos}

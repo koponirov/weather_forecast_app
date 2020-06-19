@@ -12,6 +12,9 @@ import {client} from "./server";
 class Store {
     currentCity = ' ';
     favoriteCitiesList = [];
+    // "Berlin","Stockholm","Paris",
+    // "Madrid","Novosibirsk","Moscow", "valencia","bilbao","Barcelona","New York","Florida",
+    // "Calgary","Oslo","washington","colorado"
 
     setCurrentCity(city) {
         this.currentCity = city
