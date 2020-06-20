@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 });
 
 
-export default function Row({city, temp, weather, path, store}) {
+export default function Row({city, tempC, weather, path, store}) {
     const classes = useStyles();
 
     return (<List>
@@ -26,7 +26,7 @@ export default function Row({city, temp, weather, path, store}) {
                     <Grid item xs={6} sm={3}>
                         <ListItemText classes={{primary: classes.bold}} primary={city}/>
                     </Grid>
-                    <Grid item xs={6} sm={3}>{temp} &#8451;</Grid>
+                    <Grid item xs={6} sm={3}>{tempC} &#8451;</Grid>
                     <Grid item xs={6} sm={3}>{weather}</Grid>
                 </Grid>
                 <ListItemSecondaryAction>

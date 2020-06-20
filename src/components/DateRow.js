@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 });
 
 
-export default function DateRow({date, temp, weather}) {
+export default function DateRow({date, tempC, weather}) {
     const classes = useStyles();
 
     return (<List>
@@ -26,7 +26,7 @@ export default function DateRow({date, temp, weather}) {
                     <Grid item xs={12} sm={6}>
                         <ListItemText classes={{primary: classes.bold}} primary={date}/>
                     </Grid>
-                    <Grid item xs={6} sm={3}>{temp} &#8451;</Grid>
+                    <Grid item xs={6} sm={3}>{tempC} &#8451;</Grid>
                     <Grid item xs={6} sm={3}>{weather}</Grid>
                 </Grid>
             </ListItem>

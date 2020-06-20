@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function WeatherCard({ data, store }) {
+export default function WeatherCard({ tempC,name, weather, store }) {
 
     const addToFavList = (city) => {
 
@@ -43,18 +43,18 @@ export default function WeatherCard({ data, store }) {
         <div className={classes.container}>
             <Card className={classes.root}>
                 <CardContent className={classes.root}>
-                    <Typography variant="h2" component="span">
-                        {data.getCurrentWeather.name}
+                    <Typography variant="h2" >
+                        {name}
                     </Typography>
-                    <Typography variant="h4" component="h2">
-                        {data.getCurrentWeather.main.temp_c} &#8451;
+                    <Typography variant="h4" >
+                        {tempC} &#8451;
                     </Typography>
 
                     <Typography className={classes.pos}
                                 color="textSecondary"
                                 variant="h4"
                     >
-                        {data.getCurrentWeather.weather[0].main}
+                        {weather}
                     </Typography>
                 </CardContent>
                 <CardActions>

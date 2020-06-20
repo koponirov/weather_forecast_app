@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom'
 import './index.css';
-import App from './App';
+import App from './components/App/App';
 import {Provider} from "mobx-react";
 import {action, decorate, observable} from "mobx";
 import {ApolloProvider} from "@apollo/react-hooks";
@@ -36,7 +36,8 @@ decorate(Store, {
     currentCity: observable,
     favoriteCitiesList: observable,
     setCurrentCity: action,
-    addCityToFavorite: action
+    addCityToFavorite: action,
+    removeCityFromFavorites: action
 });
 
 const appStore = new Store();
@@ -49,10 +50,7 @@ ReactDOM.render((
                     <App/>
                 </Provider>
             </BrowserRouter>
-
         </ApolloProvider>
-
-
     ),
     document.getElementById('root')
 );

@@ -6,6 +6,7 @@ import {NavLink} from "react-router-dom";
 import Row from "../Row";
 import Back from "../Back";
 import List from '@material-ui/core/List';
+import {getCurrentCityWeather, getCurrentTemperature} from "../../selectors";
 
 
 const ListItem = ({city, store}) => {
@@ -14,45 +15,34 @@ const ListItem = ({city, store}) => {
         variables: {city},
     });
 
-    if (loading||!data) return <p>Loading...</p>
+    if (loading || !data) return <p>Loading...</p>
 
     const path = `/city/${city}`;
+    const tempC = getCurrentTemperature(data);
+    const weather = getCurrentCityWeather(data);
 
-    console.log(data)
-
-    const temp = (data.getCurrentWeather.main.temp_c).toFixed(1);
-
-    const weather = data.getCurrentWeather.weather[0].main
-
-
-
-
-    return  <Row city={city} store={store}
-                          temp={temp} path={path} weather={weather}/>
-
-
-
+    return <Row city={city} store={store}
+                temp={tempC} path={path} weather={weather}/>
 
 };
 
-const ListComponent = inject("store")(observer(({store}) => {
+const ListComponent = inject("store")(observer(({ store }) => {
 
     return (
         <div>
             <div>
-                <NavLink to={'/main'}>
+                <NavLink to={'/search'}>
                     <Back/>
                 </NavLink>
                 <h1>favorite cities</h1>
             </div>
-            {store.favoriteCitiesList.length>0?
+
+            {store.favoriteCitiesList.length > 0 ?
                 <List>
                     {store.favoriteCitiesList.map(city => <ListItem key={city} city={city} store={store}/>)}
-                </List>:
+                </List> :
                 <p>No cities into favorites yet</p>
             }
-
-
         </div>
     )
 
