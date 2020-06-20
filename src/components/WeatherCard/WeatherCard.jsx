@@ -46,7 +46,5 @@ export default function WeatherCard({tempC, name, weather, store}) {
                 </CardActions>
             </Card>
         </div>
-
-
     );
 }

@@ -3,9 +3,10 @@ import {useQuery} from "@apollo/react-hooks";
 import React from "react";
 import {CURRENT_WEATHER} from "../../queries"
 import WeatherCard from "./WeatherCard";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import '../App/App.css'
+import s from './WeatherCard.module.css'
 import {getCityName, getCurrentCityWeather, getCurrentTemperature} from "../../selectors";
+import Preloader from "../Preloader/Preloader";
+import Typography from "@material-ui/core/Typography";
 
 const WeatherCardContainer = inject("store")(observer(({ store }) => {
 
@@ -15,12 +16,14 @@ const WeatherCardContainer = inject("store")(observer(({ store }) => {
         variables: { city },
     });
 
-    if (loading) return <p className='form-container'><CircularProgress /></p>;
-    if (error) return <p>Invalid city name or connection problem</p>;
+    if (loading) return <Preloader/>
+    if (error) return (
+        <Typography variant="h6" color="textSecondary" className={s.container}>
+            Invalid city name or connection problem</Typography>);
 
     const tempC = getCurrentTemperature(data);
     const name = getCityName(data);
-    const weather = getCurrentCityWeather(data)
+    const weather = getCurrentCityWeather(data);
 
     return (
         <WeatherCard tempC={tempC} name={name} weather={weather} store={store} />

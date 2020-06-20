@@ -1,33 +1,30 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import {IconButton} from '@material-ui/core';
-import {Delete} from '@material-ui/icons';
 import Divider from '@material-ui/core/Divider';
-import {Link, NavLink} from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
 import List from "@material-ui/core/List";
-
-const useStyles = makeStyles({
-    bold: {
-        fontWeight: 'bold',
-    },
-});
+import Typography from "@material-ui/core/Typography";
 
 
 export default function DateRow({date, tempC, weather}) {
-    const classes = useStyles();
 
     return (<List>
             <ListItem>
                 <Grid container spacing={0}>
                     <Grid item xs={12} sm={6}>
-                        <ListItemText classes={{primary: classes.bold}} primary={date}/>
+                        <Typography variant="h6">{date}</Typography>
                     </Grid>
-                    <Grid item xs={6} sm={3}>{tempC} &#8451;</Grid>
-                    <Grid item xs={6} sm={3}>{weather}</Grid>
+                    <Grid item xs={6} sm={3}>
+                        <Typography variant="h6"
+                                    color='textSecondary'
+                                    align='left'
+                        >{tempC} &#8451;</Typography>
+                    </Grid>
+                    <Grid item xs={6} sm={3}>
+                        <Typography variant="h6"
+                                    align='left'
+                        >{weather}</Typography>
+                    </Grid>
                 </Grid>
             </ListItem>
             <Divider/>

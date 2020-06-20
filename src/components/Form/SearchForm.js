@@ -29,9 +29,9 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const FormContainer = inject("store")(observer(({store}) => <MyForm store={store}/>))
+const FormContainer = inject("store")(observer(({store}) => <SearchForm store={store}/>))
 
-const MyForm = (props) => {
+const SearchForm = (props) => {
 
     const classes = useStyles();
 
@@ -47,7 +47,8 @@ const MyForm = (props) => {
     });
 
     const handleSubmit = (values) => {
-        props.store.setCurrentCity(values.city)
+        const city = values.city.charAt(0).toUpperCase() + values.city.slice(1);
+        props.store.setCurrentCity(city)
     };
 
     return (
@@ -79,7 +80,7 @@ const MyForm = (props) => {
                                             size="large"
                                             color="primary"
                                             className={classes.btn}
-                                        >To list</Button>
+                                        >favorites</Button>
                                     </NavLink>
                                 </div>
                             </Form>

@@ -8,6 +8,7 @@ import Back from "../Back";
 import List from '@material-ui/core/List';
 import {getCurrentCityWeather, getCurrentTemperature} from "../../selectors";
 import Typography from "@material-ui/core/Typography";
+import Preloader from "../Preloader/Preloader";
 
 
 const ListItem = ({city, store}) => {
@@ -16,7 +17,9 @@ const ListItem = ({city, store}) => {
         variables: {city},
     });
 
-    if (loading || !data) return <p>Loading...</p>
+    if (loading || !data) return <Preloader/>;
+    if (error) return <Typography variant="h6" color="textSecondary">{error.message}</Typography>;
+
 
     const path = `/city/${city}`;
     const tempC = getCurrentTemperature(data);
@@ -45,7 +48,13 @@ const ListComponent = inject("store")(observer(({ store }) => {
                 <List>
                     {store.favoriteCitiesList.map(city => <ListItem key={city} city={city} store={store}/>)}
                 </List> :
-                <p>No cities into favorites yet</p>
+                <Typography variant="h5"
+                            color="textSecondary"
+                            align='center'
+                            gutterBottom='true'
+                >favorite cities not added yet,
+                    go back to Search
+                </Typography>
             }
         </div>
     )

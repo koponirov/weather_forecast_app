@@ -8,10 +8,10 @@ import {action, decorate, observable} from "mobx";
 import {ApolloProvider} from "@apollo/react-hooks";
 import {client} from "./server";
 
-
 class Store {
     currentCity = ' ';
     favoriteCitiesList = [];
+
     // "Berlin","Stockholm","Paris",
     // "Madrid","Novosibirsk","Moscow", "valencia","bilbao","Barcelona","New York","Florida",
     // "Calgary","Oslo","washington","colorado"

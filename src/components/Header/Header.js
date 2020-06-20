@@ -7,8 +7,8 @@ import s from './Header.module.css'
 const Header = () => {
     return (
         <AppBar position="static" className={s.header_container}>
-            <Toolbar>
-                <Typography variant="h3">
+            <Toolbar className={s.toolbar}>
+                <Typography variant="h3" align='center'>
                     Weather forecast
                 </Typography>
             </Toolbar>
