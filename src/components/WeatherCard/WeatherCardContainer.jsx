@@ -1,11 +1,11 @@
 import {inject, observer} from "mobx-react";
 import {useQuery} from "@apollo/react-hooks";
 import React from "react";
-import {CURRENT_WEATHER} from "../queries"
+import {CURRENT_WEATHER} from "../../queries"
 import WeatherCard from "./WeatherCard";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import './App/App.css'
-import {getCityName, getCurrentCityWeather, getCurrentTemperature} from "../selectors";
+import '../App/App.css'
+import {getCityName, getCurrentCityWeather, getCurrentTemperature} from "../../selectors";
 
 const WeatherCardContainer = inject("store")(observer(({ store }) => {
 

@@ -1,6 +1,6 @@
 import React from "react";
 import FormContainer from "./Form/MyForm";
-import WeatherCardContainer from "./WeatherCardContainer";
+import WeatherCardContainer from "./WeatherCard/WeatherCardContainer";
 
 const Search = () => {
 

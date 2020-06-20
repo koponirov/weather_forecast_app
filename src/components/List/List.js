@@ -7,6 +7,7 @@ import Row from "../Row";
 import Back from "../Back";
 import List from '@material-ui/core/List';
 import {getCurrentCityWeather, getCurrentTemperature} from "../../selectors";
+import Typography from "@material-ui/core/Typography";
 
 
 const ListItem = ({city, store}) => {
@@ -22,8 +23,7 @@ const ListItem = ({city, store}) => {
     const weather = getCurrentCityWeather(data);
 
     return <Row city={city} store={store}
-                temp={tempC} path={path} weather={weather}/>
-
+                tempC={tempC} path={path} weather={weather}/>
 };
 
 const ListComponent = inject("store")(observer(({ store }) => {
@@ -34,7 +34,11 @@ const ListComponent = inject("store")(observer(({ store }) => {
                 <NavLink to={'/search'}>
                     <Back/>
                 </NavLink>
-                <h1>favorite cities</h1>
+                <Typography variant="h2"
+                            align='center'
+                            gutterBottom='true'
+                >Favorite cities
+                </Typography>
             </div>
 
             {store.favoriteCitiesList.length > 0 ?
