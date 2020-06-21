@@ -10,7 +10,7 @@ MobX
 UI-framework - Material UI
 GraphQL клиент - Apollo
 
-Приложение получает данные:
+Приложение ожидает полученние данных, прослушивая порт 4000, необходимо установить пакет:
 
 GraphQL прокси
 https://github.com/MiroYar/my-apollo-openweathermap-server
