@@ -42,7 +42,7 @@ const SearchForm = (props) => {
     const validationSchema = Yup.object().shape({
         city: Yup.string()
             .min(2, 'Too short')
-            .max(25,'Too long')
+            .max(25,'The longest city name is Aleksandrovsk-Sakhalinskiy')
             .required('Please, type city name')
     });
 

@@ -5,8 +5,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import s from './WeatherCard.module.css'
+import {observer} from "mobx-react";
 
-export default function WeatherCard({tempC, name, weather, store}) {
+const WeatherCard = observer(({tempC, name, weather, store}) => {
 
     const addToFavList = (city) => {
 
@@ -38,13 +39,20 @@ export default function WeatherCard({tempC, name, weather, store}) {
                     </Typography>
                 </CardContent>
                 <CardActions className={s.container}>
-                    <Button size="small"
-                            color="primary"
-                            align='center'
-                            onClick={() => addToFavList(store.currentCity)}
-                    >Add to favorites</Button>
+                    {
+                        (store.favoriteCitiesList.some(favCity => favCity === store.currentCity)) ?
+                            <Typography variant="h6" color="textSecondary" className={s.container}>
+                                this city is already in favorites</Typography> :
+                            <Button size="small"
+                                    color="primary"
+                                    align='center'
+                                    onClick={() => addToFavList(store.currentCity)}
+                            >Add to favorites</Button>
+                    }
                 </CardActions>
             </Card>
         </div>
     );
-}
+});
+
+export default WeatherCard;
