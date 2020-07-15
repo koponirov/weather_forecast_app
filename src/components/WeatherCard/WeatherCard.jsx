@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import s from './WeatherCard.module.css'
 import {observer} from "mobx-react";
+import Fade from '@material-ui/core/Fade';
 
 const WeatherCard = observer(({tempC, name, weather, store}) => {
 
@@ -20,6 +21,7 @@ const WeatherCard = observer(({tempC, name, weather, store}) => {
 
     return (
         <div className={s.container}>
+
             <Card className={s.card}>
                 <CardContent>
                     <Typography variant="h2"
@@ -51,6 +53,7 @@ const WeatherCard = observer(({tempC, name, weather, store}) => {
                     }
                 </CardActions>
             </Card>
+
         </div>
     );
 });

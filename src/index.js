@@ -24,11 +24,7 @@ class Store {
         this.favoriteCitiesList.push(city)
     }
     removeCityFromFavorites = (city) => {
-        for(let i = this.favoriteCitiesList.length - 1; i >= 0; i--) {
-            if(this.favoriteCitiesList[i] === city) {
-                this.favoriteCitiesList.splice(i, 1);
-            }
-        }
+        this.favoriteCitiesList = this.favoriteCitiesList.filter(c => c !== city)
     }
 };
 
